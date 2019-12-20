@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #7B7B7B;
+        }
+
+        #tools {
+            background-color: black;
+            padding: 10px;
+        }
+
+        #tools button {
+            padding: 2px 5px;
+        }
+
+        #board {
+            background-color: white;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tools">
+        <button onclick="undo()">Undo</button>
+        <button onclick="redo()">Redo</button>
+
+        <button onclick="changColor('#FF0000')">Red</button>
+        <button onclick="changColor('#000000')">Black</button>
+        <button onclick="changColor('#00ff00')">Green</button>
+
+
+        <button onclick="setTool('pen')">pen</button>
+        <button onclick="setTool('rect')">rect</button>
+        <button onclick="setTool('line')">line</button>
+        <button onclick="setTool('circle')">circle</button>
+
+        <button onclick="changLineWidth(1)">1</button>
+        <button onclick="changLineWidth(2)">2</button>
+        <button onclick="changLineWidth(3)">3</button>
+        <button onclick="changLineWidth(4)">4</button>
+        <button onclick="changLineWidth(5)">5</button>
+    </div>
+    <canvas id="board">
+
+    </canvas>
+</body>
+<script src="paint.js"></script>
+<script>
+    function changColor(color) {
+        p.color = color;
+    }
+    function changLineWidth(width) {
+        p.lineWidth = width;
+    }
+
+    function setTool(tool) {
+        p.tool = tool;
+    }
+
+    function undo(){
+        p.undo();
+    }
+    
+    function redo(){
+        p.redo();
+    }
+</script>
+
+</html>
